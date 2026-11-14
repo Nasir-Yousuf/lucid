@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lucid | One Page Theme</title>
+    <link rel="icon" type="image/png" href="./img/Lucid.png" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -12,16 +13,21 @@
       <!-- Header Section Code Start Here -->
       <header class="header-section">
         <div class="container">
-          <div class="row">
-            <div class="col-md-6">
+          <div class="header-row">
+            <div class="col-logo">
               <div class="logo">
                 <a href="#home">
                   <img src="./img/Lucid.png" alt="Lucid Logo" />
                 </a>
               </div>
             </div>
-            <div class="col-md-6">
-              <nav class="nav">
+            <div class="col-nav">
+              <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+              <nav class="nav" id="mainNav">
                 <ul>
                   <li class="active"><a href="#home">Home</a></li>
                   <li><a href="#features">Features</a></li>
@@ -44,12 +50,13 @@
               <span class="sub-title">INTRODUCING LUCID THEME</span>
               <h1>Carefully crafted and beautiful landing page.</h1>
               <p>
-                Etiam ullamcorper et turpis eget hendrerit. Praesent varius risus
-                mi, at elementum magna ultricies accumsan. Cras venenatis lacus sed
-                dolor placerat tempus. Morbi blandit at neque ut imperdiet.
+                Etiam ullamcorper et turpis eget hendrerit. Praesent varius
+                risus mi, at elementum magna ultricies accumsan. Cras venenatis
+                lacus sed dolor placerat tempus. Morbi blandit at neque ut
+                imperdiet.
               </p>
               <div class="banner-buttons">
-                <a href="#" class="btn-primary">DOWNLOAD NOW</a>
+                <a href="#pricing" class="btn-primary">DOWNLOAD NOW</a>
                 <a href="#features" class="btn-default">VIEW FEATURES</a>
               </div>
             </div>
@@ -76,52 +83,52 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-3">
+        <div class="row feature-boxes-row">
+          <div class="col-md-3 feature-col">
             <div class="feature-box">
               <div class="feature-icon">
                 <img src="./img/monitor.png" alt="Responsive" />
               </div>
               <h3>Responsive</h3>
               <p>
-                Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit non
-                ipsum lacinia consectetur.
+                Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit
+                non ipsum lacinia consectetur.
               </p>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 feature-col">
             <div class="feature-box">
               <div class="feature-icon">
                 <img src="./img/settings.png" alt="Customizable" />
               </div>
               <h3>Customizable</h3>
               <p>
-                Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit non
-                ipsum lacinia consectetur.
+                Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit
+                non ipsum lacinia consectetur.
               </p>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 feature-col">
             <div class="feature-box">
               <div class="feature-icon">
                 <img src="./img/like.png" alt="Lovely design" />
               </div>
               <h3>Lovely design</h3>
               <p>
-                Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit non
-                ipsum lacinia consectetur.
+                Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit
+                non ipsum lacinia consectetur.
               </p>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 feature-col">
             <div class="feature-box">
               <div class="feature-icon">
                 <img src="./img/phone.png" alt="Mobile Friendly" />
               </div>
               <h3>Mobile Friendly</h3>
               <p>
-                Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit non
-                ipsum lacinia consectetur.
+                Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit
+                non ipsum lacinia consectetur.
               </p>
             </div>
           </div>
@@ -133,10 +140,13 @@
     <!-- Device Details Section Code Start Here -->
     <section class="device-section" id="about">
       <div class="container">
-        <div class="row">
+        <div class="row device-row">
           <div class="col-md-6">
             <div class="device-img">
-              <img src="./img/Standard version.png" alt="Beautiful on every device" />
+              <img
+                src="./img/devices.png"
+                alt="Beautiful on every device"
+              />
             </div>
           </div>
           <div class="col-md-6">
@@ -145,25 +155,34 @@
               <h2>Beautiful on every device</h2>
               <div class="divider-left"></div>
               <p class="desc">
-                Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi
-                accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a
-                ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
+                Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+                Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt
+                auctor a ornare odio. Sed non mauris vitae erat consequat auctor
+                eu in elit.
               </p>
               <ul class="device-list">
                 <li>
-                  <span class="icon"><img src="./img/Cup.png" alt="Icon" /></span>
+                  <span class="icon"
+                    ><img src="./img/Cup.png" alt="Icon"
+                  /></span>
                   Awesome design
                 </li>
                 <li>
-                  <span class="icon"><img src="./img/Mouse.png" alt="Icon" /></span>
+                  <span class="icon"
+                    ><img src="./img/Mouse.png" alt="Icon"
+                  /></span>
                   Fully responsive
                 </li>
                 <li>
-                  <span class="icon"><img src="./img/Energy.png" alt="Icon" /></span>
+                  <span class="icon"
+                    ><img src="./img/Energy.png" alt="Icon"
+                  /></span>
                   Retina ready
                 </li>
                 <li>
-                  <span class="icon"><img src="./img/Speedometer.png" alt="Icon" /></span>
+                  <span class="icon"
+                    ><img src="./img/Speedometer.png" alt="Icon"
+                  /></span>
                   Tons of features and easy to use
                 </li>
               </ul>
@@ -177,20 +196,21 @@
     <!-- Customize Section Code Start Here -->
     <section class="customize-section">
       <div class="container">
-        <div class="row">
+        <div class="row customize-row">
           <div class="col-md-6">
             <div class="customize-content">
               <span class="sub-title">DIP INTO THE DETAILS</span>
               <h2>Super easy to customize</h2>
               <div class="divider-left"></div>
               <p>
-                Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi
-                accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a
-                ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
+                Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+                Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt
+                auctor a ornare odio. Sed non mauris vitae erat consequat auctor
+                eu in elit.
               </p>
               <p>
-                Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-                per inceptos himenaeos.
+                Class aptent taciti sociosqu ad litora torquent per conubia
+                nostra, per inceptos himenaeos.
               </p>
             </div>
           </div>
@@ -216,13 +236,13 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row testimonial-row">
           <div class="col-md-6">
             <div class="testimonial-box">
               <p class="quote">
-                Once upon a time all the Rivers combined to protest against the action
-                of the Sea in making their waters salt. “When we come to you,” said
-                they to the Sea.
+                Once upon a time all the Rivers combined to protest against the
+                action of the Sea in making their waters salt. “When we come to
+                you,” said they to the Sea.
               </p>
               <div class="client-info">
                 <div class="client-avatar">
@@ -238,9 +258,9 @@
           <div class="col-md-6">
             <div class="testimonial-box">
               <p class="quote">
-                A shoe is not only a design, but it's a part of your body language,
-                the way you walk. The way you're going to move is quite dictated by
-                your shoes.
+                A shoe is not only a design, but it's a part of your body
+                language, the way you walk. The way you're going to move is
+                quite dictated by your shoes.
               </p>
               <div class="client-info">
                 <div class="client-avatar">
@@ -271,7 +291,7 @@
     <!-- CTA Section Code Start Here -->
     <section class="cta-section">
       <div class="container">
-        <div class="row">
+        <div class="row cta-row">
           <div class="col-md-8">
             <div class="cta-text">
               <h3>
@@ -283,7 +303,7 @@
           <div class="col-md-4 text-right">
             <div class="cta-buttons">
               <a href="#features" class="btn-default">VIEW FEATURES</a>
-              <a href="#" class="btn-primary">DOWNLOAD NOW</a>
+              <a href="#pricing" class="btn-primary">DOWNLOAD NOW</a>
             </div>
           </div>
         </div>
@@ -303,8 +323,8 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-3">
+        <div class="row pricing-cards-row">
+          <div class="col-md-3 pricing-col">
             <div class="pricing-card">
               <div class="pricing-header">
                 <h3>FREE</h3>
@@ -315,16 +335,17 @@
               </div>
               <div class="pricing-body">
                 <p>
-                  Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit
-                  non ipsum <span class="highlight">lacinia</span> consectetur.
+                  Fusce fermentum placerat magna ac pharetra. Aliquam euismod
+                  elit non ipsum
+                  <span class="highlight">lacinia</span> consectetur.
                 </p>
               </div>
               <div class="pricing-footer">
-                <a href="#" class="btn-order">ORDER NOW</a>
+                <a href="#contact" class="btn-order">ORDER NOW</a>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 pricing-col">
             <div class="pricing-card">
               <div class="pricing-header">
                 <h3>PERSONAL</h3>
@@ -335,16 +356,17 @@
               </div>
               <div class="pricing-body">
                 <p>
-                  Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit
-                  non ipsum <span class="highlight">lacinia</span> consectetur.
+                  Fusce fermentum placerat magna ac pharetra. Aliquam euismod
+                  elit non ipsum
+                  <span class="highlight">lacinia</span> consectetur.
                 </p>
               </div>
               <div class="pricing-footer">
-                <a href="#" class="btn-order">ORDER NOW</a>
+                <a href="#contact" class="btn-order">ORDER NOW</a>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 pricing-col">
             <div class="pricing-card featured">
               <div class="pricing-header">
                 <h3>BUSINESS</h3>
@@ -355,16 +377,17 @@
               </div>
               <div class="pricing-body">
                 <p>
-                  Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit
-                  non ipsum <span class="highlight">lacinia</span> consectetur.
+                  Fusce fermentum placerat magna ac pharetra. Aliquam euismod
+                  elit non ipsum
+                  <span class="highlight">lacinia</span> consectetur.
                 </p>
               </div>
               <div class="pricing-footer">
-                <a href="#" class="btn-order-featured">ORDER NOW</a>
+                <a href="#contact" class="btn-order-featured">ORDER NOW</a>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 pricing-col">
             <div class="pricing-card">
               <div class="pricing-header">
                 <h3>ULTIMATE</h3>
@@ -375,12 +398,13 @@
               </div>
               <div class="pricing-body">
                 <p>
-                  Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit
-                  non ipsum <span class="highlight">lacinia</span> consectetur.
+                  Fusce fermentum placerat magna ac pharetra. Aliquam euismod
+                  elit non ipsum
+                  <span class="highlight">lacinia</span> consectetur.
                 </p>
               </div>
               <div class="pricing-footer">
-                <a href="#" class="btn-order">ORDER NOW</a>
+                <a href="#contact" class="btn-order">ORDER NOW</a>
               </div>
             </div>
           </div>
@@ -402,7 +426,7 @@
           </div>
         </div>
         <div class="row contact-meta-row">
-          <div class="col-md-4">
+          <div class="col-md-4 contact-meta-col">
             <div class="contact-meta-item">
               <div class="contact-icon">
                 <img src="./img/phone.png" alt="Phone" />
@@ -413,7 +437,7 @@
               </p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 contact-meta-col">
             <div class="contact-meta-item">
               <div class="contact-icon">
                 <img src="./img/pointer.png" alt="Location" />
@@ -425,7 +449,7 @@
               </p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 contact-meta-col">
             <div class="contact-meta-item">
               <div class="contact-icon">
                 <img src="./img/envelope.png" alt="Email" />
@@ -440,9 +464,9 @@
       <div class="contact-map-wrap">
         <div class="container">
           <div class="contact-form-card">
-            <form action="#" method="post">
-              <div class="row">
-                <div class="col-md-6">
+            <form action="#" method="post" id="contactForm">
+              <div class="row form-inner-row">
+                <div class="col-md-6 form-col">
                   <div class="form-group">
                     <input
                       type="text"
@@ -471,8 +495,8 @@
                     />
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
+                <div class="col-md-6 form-col">
+                  <div class="form-group textarea-group">
                     <textarea
                       name="message"
                       placeholder="MESSAGE *"
@@ -482,7 +506,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <div class="row form-submit-row">
                 <div class="col-md-12 text-right">
                   <input
                     type="submit"
@@ -496,10 +520,9 @@
         </div>
         <div class="map-wrapper">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d17862.467975739935!2d90.26513116417412!3d23.88180447011429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d23.893357599999998!2d90.2713955!4m5!1s0x3755e99629f6207b%3A0x98c5aa6de597f3a3!2sNational%20Institute%20of%20Youth%20Development%2C%20National%20Institute%20of%20Youth%20Development%2C%20Ministry%20of%20Youth%20and%20Sports%2C%20Savar!3m2!1d23.8814209!2d90.27342379999999!5e0!3m2!1sen!2sbd!4v1790649302958!5m2!1sen!2sbd"
-            width="600"
-            height="450"
-            style="border:0;"
+            src="https://maps.google.com/maps?q=1001%20Brickell%20Bay%20Dr,%20Miami,%20FL%2033131&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            title="Office Location Map"
+            style="border: 0"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
@@ -515,20 +538,30 @@
         <div class="row">
           <div class="col-md-12">
             <div class="social-links">
-              <a href="#" title="Behance"><img src="./img/behance.png" alt="Behance" /></a>
-              <a href="#" title="Dribbble"><img src="./img/dribbble.png" alt="Dribbble" /></a>
-              <a href="#" title="Twitter"><img src="./img/twitter.png" alt="Twitter" /></a>
-              <a href="#" title="Facebook"><img src="./img/facebook.png" alt="Facebook" /></a>
-              <a href="#" title="LinkedIn"><img src="./img/linkedin.png" alt="LinkedIn" /></a>
+              <a href="#" title="Behance"
+                ><img src="./img/behance.png" alt="Behance"
+              /></a>
+              <a href="#" title="Dribbble"
+                ><img src="./img/dribbble.png" alt="Dribbble"
+              /></a>
+              <a href="#" title="Twitter"
+                ><img src="./img/twitter.png" alt="Twitter"
+              /></a>
+              <a href="#" title="Facebook"
+                ><img src="./img/facebook.png" alt="Facebook"
+              /></a>
+              <a href="#" title="LinkedIn"
+                ><img src="./img/linkedin.png" alt="LinkedIn"
+              /></a>
             </div>
-            <p class="copyright">
-              COPYRIGHT &copy; 2014 LUCID ONEPAGE THEME
-            </p>
+            <p class="copyright">COPYRIGHT &copy; 2014 LUCID ONEPAGE THEME</p>
           </div>
         </div>
       </div>
     </footer>
     <!-- Footer Section Code End Here -->
 
+    <!-- Scripts -->
+    <script src="./js/script.js"></script>
   </body>
 </html>

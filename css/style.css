@@ -2,9 +2,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-/* Reset & Global Start Here */
+/* ==========================================================================
+   Reset & Global Styles
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -17,6 +20,9 @@ body {
   line-height: 24px;
   color: #999999;
   background-color: #ffffff;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
 }
 
 h1,
@@ -46,19 +52,26 @@ ol {
 
 img {
   max-width: 100%;
-  display: inline-block;
-  vertical-align: middle;
+  height: auto;
+  display: block;
 }
 
-/* Grid System Start Here */
+/* ==========================================================================
+   Grid System (Modern Flexbox + Responsive)
+   ========================================================================== */
 .container {
-  width: 1160px;
+  width: 100%;
+  max-width: 1160px;
   margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .row {
-  width: 100%;
-  float: left;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 .clearfix::after,
@@ -69,29 +82,51 @@ img {
   clear: both;
 }
 
+.col-md-12,
+.col-md-8,
+.col-md-6,
+.col-md-4,
+.col-md-3,
+.col-logo,
+.col-nav,
+.form-col {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
 .col-md-12 {
-  width: 100%;
-  float: left;
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .col-md-8 {
-  width: 66.666%;
-  float: left;
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .col-md-6 {
-  width: 50%;
-  float: left;
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .col-md-4 {
-  width: 33.333%;
-  float: left;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .col-md-3 {
-  width: 25%;
-  float: left;
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .text-center {
@@ -105,9 +140,10 @@ img {
 .text-left {
   text-align: left;
 }
-/* Grid System End Here */
 
-/* Section Title & Dividers Start Here */
+/* ==========================================================================
+   Section Title & Dividers
+   ========================================================================== */
 .section-title {
   padding-bottom: 10px;
 }
@@ -144,9 +180,10 @@ img {
   margin: 16px 0 25px;
   border: none;
 }
-/* Section Title & Dividers End Here */
 
-/* Buttons Start Here */
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
 .btn-primary {
   display: inline-block;
   background: #008ed6;
@@ -160,6 +197,8 @@ img {
   border-radius: 3px;
   cursor: pointer;
   transition: 0.3s;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .btn-primary:hover {
@@ -182,18 +221,20 @@ img {
   cursor: pointer;
   transition: 0.3s;
   margin-left: 10px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .btn-default:hover {
   border-color: #008ed6;
   color: #008ed6;
 }
-/* Buttons End Here */
 
-/* Header & Banner Section Start Here */
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
 .banner-section {
   width: 100%;
-  float: left;
   background: url("../img/bg.png") center top no-repeat;
   background-size: cover;
   position: relative;
@@ -202,22 +243,54 @@ img {
 
 .header-section {
   width: 100%;
-  float: left;
-  padding: 38px 0 20px;
+  padding: 35px 0 20px;
+  position: relative;
+  z-index: 100;
 }
 
-.header-section .logo {
-  padding-top: 6px;
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.col-logo {
+  flex: 0 0 auto;
+}
+
+.col-nav {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-section .logo a {
+  display: flex;
+  align-items: center;
+}
+
+.header-section .logo img {
+  height: 20px;
+  width: auto;
+  display: block;
 }
 
 .header-section .nav {
   text-align: right;
-  padding-top: 2px;
+}
+
+.header-section .nav ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .header-section .nav ul li {
-  display: inline-block;
   margin-left: 32px;
+  position: relative;
 }
 
 .header-section .nav ul li a {
@@ -226,6 +299,18 @@ img {
   font-weight: 600;
   position: relative;
   padding-bottom: 6px;
+  display: inline-block;
+}
+
+.header-section .nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #008ed6;
+  transition: width 0.3s ease;
 }
 
 .header-section .nav ul li a:hover,
@@ -233,13 +318,61 @@ img {
   color: #008ed6;
 }
 
+.header-section .nav ul li a:hover::after,
+.header-section .nav ul li.active a::after {
+  width: 100%;
+}
+
+/* Mobile Hamburger Toggle */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 4px;
+  z-index: 102;
+  width: 32px;
+  height: 32px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 3px 0;
+  background-color: #ffffff;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Banner Section
+   ========================================================================== */
 .banner-inner {
-  padding: 70px 0 0;
+  padding: 50px 0 0;
+  display: flex;
+  align-items: flex-end;
 }
 
 .banner-content {
-  padding-top: 60px;
-  padding-right: 30px;
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-bottom: 60px;
 }
 
 .banner-content .sub-title {
@@ -268,49 +401,71 @@ img {
 }
 
 .banner-buttons {
-  margin-bottom: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.banner-buttons .btn-default {
+  margin-left: 0;
 }
 
 .banner-img {
   text-align: right;
+  line-height: 0;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .banner-img img {
   vertical-align: bottom;
   max-width: 100%;
+  height: auto;
+  display: block;
 }
-/* Header & Banner Section End Here */
 
-/* Features Section Start Here */
+/* ==========================================================================
+   Features Section
+   ========================================================================== */
 .feature-section {
   width: 100%;
-  float: left;
-  padding: 85px 0 90px;
+  padding: 90px 0 85px;
   background: #ffffff;
+}
+
+.feature-boxes-row {
+  margin-top: 20px;
+}
+
+.feature-col {
+  margin-bottom: 25px;
 }
 
 .feature-box {
   text-align: center;
   padding: 0 15px;
+  height: 100%;
 }
 
 .feature-icon {
   width: 82px;
   height: 82px;
-  line-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #dce0e3;
   border-radius: 50%;
   margin: 0 auto 25px;
-  text-align: center;
-  transition: 0.3s;
+  transition: border-color 0.3s, transform 0.3s;
 }
 
 .feature-box:hover .feature-icon {
   border-color: #008ed6;
+  transform: translateY(-3px);
 }
 
 .feature-icon img {
-  vertical-align: middle;
+  display: block;
 }
 
 .feature-box h3 {
@@ -325,24 +480,37 @@ img {
   line-height: 24px;
   color: #999999;
 }
-/* Features Section End Here */
 
-/* Device Section Start Here */
+/* ==========================================================================
+   Device Details Section ("Beautiful on every device")
+   ========================================================================== */
 .device-section {
   width: 100%;
-  float: left;
-  padding: 75px 0 85px;
+  padding: 85px 0 85px;
   background: #ffffff;
   border-top: 1px solid #f0f0f0;
 }
 
+.device-row {
+  display: flex;
+  align-items: center;
+}
+
 .device-img {
   text-align: center;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.device-img img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .device-content {
-  padding-top: 40px;
-  padding-left: 20px;
+  padding-left: 25px;
 }
 
 .device-content .sub-title {
@@ -366,7 +534,7 @@ img {
   font-size: 14px;
   line-height: 24px;
   color: #999999;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .device-list {
@@ -374,7 +542,8 @@ img {
 }
 
 .device-list li {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-bottom: 16px;
   font-size: 15px;
   font-weight: 600;
@@ -382,25 +551,30 @@ img {
 }
 
 .device-list li .icon {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 26px;
-  text-align: center;
-  margin-right: 12px;
-  vertical-align: middle;
+  margin-right: 14px;
+  flex-shrink: 0;
 }
-/* Device Section End Here */
 
-/* Customize Section Start Here */
+/* ==========================================================================
+   Customize Section ("Super easy to customize")
+   ========================================================================== */
 .customize-section {
   width: 100%;
-  float: left;
-  padding: 85px 0 70px;
+  padding: 90px 0 80px;
   background: #f4f6f7;
   overflow: hidden;
 }
 
+.customize-row {
+  display: flex;
+  align-items: center;
+}
+
 .customize-content {
-  padding-top: 50px;
   padding-right: 25px;
 }
 
@@ -430,14 +604,22 @@ img {
 
 .customize-img {
   text-align: right;
+  display: flex;
+  justify-content: flex-end;
 }
-/* Customize Section End Here */
 
-/* Testimonials Section Start Here */
+.customize-img img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   Testimonials Section
+   ========================================================================== */
 .testimonials-section {
   width: 100%;
-  float: left;
-  padding: 85px 0 75px;
+  padding: 90px 0 80px;
   background: url("../img/Warstwa 8.png") center center no-repeat;
   background-size: cover;
   position: relative;
@@ -466,8 +648,13 @@ img {
   color: #ffffff !important;
 }
 
+.testimonial-row {
+  margin-top: 10px;
+}
+
 .testimonial-box {
-  padding: 0 25px;
+  padding: 0 20px;
+  margin-bottom: 25px;
 }
 
 .testimonial-box .quote {
@@ -481,26 +668,22 @@ img {
 }
 
 .client-info {
-  width: 100%;
-  float: left;
+  display: flex;
+  align-items: center;
 }
 
 .client-avatar {
-  float: left;
   width: 60px;
   height: 60px;
   margin-right: 18px;
+  flex-shrink: 0;
 }
 
 .client-avatar img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-}
-
-.client-meta {
-  float: left;
-  padding-top: 10px;
+  object-fit: cover;
 }
 
 .client-meta h4 {
@@ -519,13 +702,16 @@ img {
 }
 
 .pagination-dots {
-  margin-top: 50px;
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination-dots .dot {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   border: 2px solid #ffffff;
   margin: 0 5px;
@@ -534,24 +720,31 @@ img {
   transition: 0.3s;
 }
 
-.pagination-dots .dot.active {
+.pagination-dots .dot.active,
+.pagination-dots .dot:hover {
   background: #ffffff;
 }
-/* Testimonials Section End Here */
 
-/* CTA Section Start Here */
+/* ==========================================================================
+   CTA Section
+   ========================================================================== */
 .cta-section {
   width: 100%;
-  float: left;
-  padding: 42px 0;
+  padding: 45px 0;
   background: #15181e;
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .cta-text h3 {
   font-size: 24px;
   font-weight: 700;
   color: #ffffff;
-  line-height: 48px;
+  line-height: 36px;
 }
 
 .cta-text h3 span {
@@ -561,29 +754,47 @@ img {
 }
 
 .cta-buttons {
-  padding-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
 }
-/* CTA Section End Here */
 
-/* Pricing Section Start Here */
+.cta-buttons .btn-default {
+  margin-left: 0;
+}
+
+/* ==========================================================================
+   Pricing Section
+   ========================================================================== */
 .pricing-section {
   width: 100%;
-  float: left;
-  padding: 85px 0 95px;
+  padding: 90px 0 95px;
   background: #ffffff;
+}
+
+.pricing-cards-row {
+  margin-top: 15px;
+}
+
+.pricing-col {
+  margin-bottom: 25px;
 }
 
 .pricing-card {
   border: 1px solid #e0e4e6;
   text-align: center;
   border-radius: 3px;
-  margin: 0 10px;
   background: #ffffff;
-  transition: 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .pricing-card:hover {
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
 }
 
 .pricing-header {
@@ -627,6 +838,7 @@ img {
 
 .pricing-body {
   padding: 26px 20px;
+  flex-grow: 1;
 }
 
 .pricing-body p {
@@ -707,18 +919,23 @@ img {
   background: #0077b5;
   border-color: #0077b5;
 }
-/* Pricing Section End Here */
 
-/* Contact Section Start Here */
+/* ==========================================================================
+   Contact Section & Overlapping Form Card
+   ========================================================================== */
 .contact-section {
   width: 100%;
-  float: left;
-  padding-top: 85px;
+  padding-top: 90px;
   background: #f4f6f7;
+  position: relative;
 }
 
 .contact-meta-row {
-  margin-bottom: 50px;
+  margin-bottom: 55px;
+}
+
+.contact-meta-col {
+  margin-bottom: 25px;
 }
 
 .contact-meta-item {
@@ -728,7 +945,10 @@ img {
 
 .contact-icon {
   margin-bottom: 18px;
-  height: 32px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contact-meta-item p {
@@ -737,15 +957,15 @@ img {
   color: #999999;
 }
 
-/* Contact Form Card Overlapping Map */
+/* Overlapping Form Wrap */
 .contact-map-wrap {
   width: 100%;
-  float: left;
   position: relative;
 }
 
 .contact-form-card {
-  width: 750px;
+  max-width: 750px;
+  width: 100%;
   margin: 0 auto;
   background: #15181e;
   padding: 45px 50px 35px;
@@ -753,14 +973,34 @@ img {
   position: relative;
   z-index: 10;
   margin-bottom: -150px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
 
-.contact-form-card .col-md-6 {
+.contact-form-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-inner-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+.form-col {
+  flex: 0 0 50%;
+  max-width: 50%;
   padding: 0 8px;
 }
 
 .form-group {
+  margin-bottom: 14px;
+}
+
+.form-group.textarea-group {
+  height: calc(100% - 14px);
   margin-bottom: 14px;
 }
 
@@ -775,11 +1015,13 @@ img {
   color: #ffffff;
   outline: none;
   font-family: inherit;
-  transition: 0.3s;
+  transition: border-color 0.3s, background-color 0.3s;
+  box-sizing: border-box;
 }
 
 .form-control:focus {
   border-color: #008ed6;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .form-control::placeholder {
@@ -788,30 +1030,47 @@ img {
 }
 
 textarea.form-control {
-  height: 153px;
+  height: 100%;
+  min-height: 168px;
   resize: none;
+  display: block;
 }
 
+.form-submit-row {
+  margin-top: 6px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.form-submit-row .col-md-12 {
+  padding: 0;
+}
+
+.contact-form-card .btn-primary {
+  padding: 13px 32px;
+}
+
+/* Map Wrapper */
 .map-wrapper {
   width: 100%;
-  height: 450px;
-  float: left;
-  line-height: 0;
+  height: 460px;
+  position: relative;
   overflow: hidden;
+  background: #e5e3df url("../img/Warstwa_15.png") center center / cover no-repeat;
 }
 
 .map-wrapper iframe {
   width: 100%;
-  height: 450px;
+  height: 100%;
   display: block;
   border: 0;
 }
-/* Contact Section End Here */
 
-/* Footer Section Start Here */
+/* ==========================================================================
+   Footer Section
+   ========================================================================== */
 .footer-section {
   width: 100%;
-  float: left;
   padding: 45px 0 35px;
   background: #15181e;
   text-align: center;
@@ -819,17 +1078,23 @@ textarea.form-control {
 
 .social-links {
   margin-bottom: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 }
 
 .social-links a {
-  display: inline-block;
-  margin: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0.45;
-  transition: 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
 .social-links a:hover {
   opacity: 1;
+  transform: translateY(-2px);
 }
 
 .copyright {
@@ -839,4 +1104,284 @@ textarea.form-control {
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
-/* Footer Section End Here */
+
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
+
+/* Medium Devices (Tablets & Small Laptops: max-width 991px) */
+@media (max-width: 991px) {
+  .banner-content h1 {
+    font-size: 38px;
+    line-height: 46px;
+  }
+
+  .banner-content {
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  /* Grid adaptations */
+  .col-md-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .device-row,
+  .customize-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .device-content {
+    padding-left: 0;
+    margin-top: 35px;
+  }
+
+  .divider-left {
+    margin: 16px auto 25px;
+  }
+
+  .device-list {
+    display: inline-block;
+    text-align: left;
+  }
+
+  .customize-content {
+    padding-right: 0;
+    margin-bottom: 35px;
+  }
+
+  .customize-img {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .cta-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .cta-buttons {
+    justify-content: center;
+  }
+
+  .contact-form-card {
+    max-width: 90%;
+  }
+}
+
+/* Mobile Devices (max-width: 767px) */
+@media (max-width: 767px) {
+  .header-section {
+    padding: 20px 0 15px;
+  }
+
+  /* Mobile Navigation */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .header-section .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #15181e;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .header-section .nav.open {
+    display: block;
+  }
+
+  .header-section .nav ul {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .header-section .nav ul li {
+    margin-left: 0;
+  }
+
+  .header-section .nav ul li a {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  /* Banner Mobile */
+  .banner-inner {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 25px;
+  }
+
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .banner-content {
+    padding-right: 0;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+
+  .banner-content h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .banner-content p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 25px;
+  }
+
+  .banner-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 280px;
+    margin: 0 auto 30px;
+    gap: 10px;
+  }
+
+  .banner-buttons .btn-primary,
+  .banner-buttons .btn-default {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .banner-img {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .banner-img img {
+    margin: 0 auto;
+    max-width: 85%;
+  }
+
+  /* Section Titles */
+  .section-title h2,
+  .device-content h2,
+  .customize-content h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .divider {
+    margin: 14px auto 35px;
+  }
+
+  /* Columns stack to 100% on mobile */
+  .col-md-3,
+  .col-md-4,
+  .col-md-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .feature-section,
+  .device-section,
+  .customize-section,
+  .testimonials-section,
+  .pricing-section,
+  .contact-section {
+    padding-top: 55px;
+    padding-bottom: 50px;
+  }
+
+  .device-img img {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+
+  .customize-img img {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+
+  /* CTA Buttons */
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 280px;
+    margin: 0 auto;
+    gap: 10px;
+  }
+
+  .cta-buttons .btn-primary,
+  .cta-buttons .btn-default {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  /* Pricing Cards */
+  .pricing-card {
+    max-width: 320px;
+    margin: 0 auto 20px;
+  }
+
+  /* Contact Form Mobile */
+  .contact-form-card {
+    padding: 30px 20px 25px;
+    max-width: 100%;
+    margin-bottom: -90px;
+  }
+
+  .form-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  textarea.form-control {
+    min-height: 120px;
+  }
+
+  .contact-form-card .btn-primary {
+    width: 100%;
+  }
+
+  .map-wrapper {
+    height: 360px;
+  }
+
+  .cta-text h3 {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .cta-text h3 span {
+    display: block;
+    font-size: 18px;
+  }
+}
+
+/* Extra Small Phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .banner-content h1 {
+    font-size: 25px;
+    line-height: 32px;
+  }
+
+  .testimonial-box {
+    padding: 0 5px;
+  }
+
+  .testimonial-box .quote {
+    font-size: 15px;
+    line-height: 24px;
+    min-height: auto;
+  }
+}
