@@ -1081,8 +1081,13 @@ textarea.form-control {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.45;
+  opacity: 0.65;
   transition: opacity 0.3s, transform 0.3s;
+}
+
+.social-links a img {
+  filter: brightness(0) invert(1);
+  display: block;
 }
 
 .social-links a:hover {
